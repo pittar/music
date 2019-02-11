@@ -12,7 +12,7 @@ try {
             echo "gitSourceRef: ${gitSourceRef}"
         }
     }
-    node("gradle") {
+    node("jenkins-slave-gradle") {
         stage("Checkout") {
             git url: "${gitSourceUrl}", branch: "${gitSourceRef}"
         }
