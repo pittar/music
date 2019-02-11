@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         mavenLocal()
-        maven { url "http://nexus.cicd.svc:8081/repository/maven-public/" }
+        maven { url "http://nexus:8081/repository/maven-public/" }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
@@ -34,7 +34,7 @@ apply plugin:"maven"
 
 repositories {
     mavenLocal()
-    maven { url "http://nexus.cicd.svc:8081/repository/maven-public/" }
+    maven { url "http://nexus:8081/repository/maven-public/" }
 }
 
 dependencies {
