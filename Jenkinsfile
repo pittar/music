@@ -19,9 +19,9 @@ try {
         stage("Build JAR") {
             sh "gradle build"
             sh "ls -la"
-            sh "ls -ls target"
+            sh "ls -ls build/libs"
             // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
-            stash name:"jar", includes:"target/music-0.1.jar"
+            stash name:"jar", includes:"build/libs/music-0.1.jar"
         }
     }
     node {
