@@ -27,7 +27,7 @@ try {
     node {
         stage("Build Image") {
             unstash name:"jar"
-            sh "oc start-build ${appName}-build --from-file=target/app.jar -n ${project}"
+            sh "oc start-build ${appName}-build --from-file=build/libs/app.jar -n ${project}"
         }
     }
     /**
