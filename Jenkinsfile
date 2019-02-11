@@ -20,7 +20,7 @@ try {
             sh "gradle build"
             sh "ls -ls build/libs"
             sh "cp build/libs/*.jar build/libs/app.jar"
-            // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
+            sh "gradle sonarqube"
         }
     }
     node {
