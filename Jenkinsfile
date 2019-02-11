@@ -18,14 +18,16 @@ try {
         }
         stage("Build JAR") {
             sh "gradle build"
+            sh "ls -la"
+            sh "ls -ls target"
             // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
-            stash name:"jar", includes:"target/app.jar"
+            stash name:"jar", includes:"target/music-0.1.jar"
         }
     }
     node {
         stage("Build Image") {
             unstash name:"jar"
-            sh "oc start-build ${appName}-build --from-file=target/app.jar -n ${project}"
+            sh "oc start-build ${appName}-build --from-file=target/music-0.1.jar -n ${project}"
         }
     }
     /**
