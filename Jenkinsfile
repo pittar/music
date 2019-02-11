@@ -21,12 +21,10 @@ try {
             sh "ls -ls build/libs"
             sh "cp build/libs/*.jar build/libs/app.jar"
             // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
-            // stash name:"jar", includes:"build/libs/app.jar"
         }
     }
     node {
         stage("Build Image") {
-            // unstash name:"jar"
             sh "oc start-build ${appName}-build --from-file=build/libs/app.jar -n ${project}"
         }
     }
