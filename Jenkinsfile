@@ -19,16 +19,16 @@ try {
         stage("Build JAR") {
             sh "gradle build"
             // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
-            // stash name:"jar", includes:"target/app.jar"
+            stash name:"jar", includes:"target/app.jar"
         }
     }
-/**
     node {
         stage("Build Image") {
             unstash name:"jar"
             sh "oc start-build ${appName}-build --from-file=target/app.jar -n ${project}"
         }
     }
+    /**
     node {
         stage("Deploy DEV") {
             openshift.withCluster() {
@@ -60,7 +60,7 @@ try {
             }
         }
     }
-*/
+    */
 } catch (err) {
     echo "in catch block"
     echo "Caught: ${err}"
