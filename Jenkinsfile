@@ -18,7 +18,6 @@ try {
         }
         stage("Build JAR") {
             sh "gradle build"
-            sh "ls -la"
             sh "ls -ls build/libs"
             sh "cp build/libs/*.jar build/libs/app.jar"
             // sh "mvn sonar:sonar -Dsonar.host.url=http://sonarqube.cicd.svc:9000 -Dsonar.login=<generated token>"
